@@ -427,29 +427,6 @@ export default function Home() {
                 Download Resume
               </motion.a>
             </div>
-
-            <div className="flex gap-4 justify-center">
-              {[
-                { icon: Github, href: personalInfo.github, label: "GitHub" },
-                { icon: Linkedin, href: personalInfo.linkedin, label: "LinkedIn" },
-                { icon: Mail, href: `mailto:${personalInfo.email}`, label: "Email" }
-              ].map((social, idx) => (
-                <motion.a
-                  key={idx}
-                  whileHover={{ scale: 1.2, y: -5 }}
-                  whileTap={{ scale: 0.9 }}
-                  href={social.href}
-                  aria-label={social.label}
-                  className={`w-14 h-14 rounded-2xl shadow-xl transition-all flex items-center justify-center ${
-                    darkMode
-                      ? 'bg-gray-800 text-purple-400 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-purple-500 hover:text-white'
-                      : 'bg-white text-purple-600 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:text-white'
-                  }`}
-                >
-                  <social.icon size={26} />
-                </motion.a>
-              ))}
-            </div>
           </motion.div>
         </div>
       </section>
@@ -487,12 +464,15 @@ export default function Home() {
               
               <div className="space-y-4">
                 {[
-                  { icon: MapPin, label: "Location", value: personalInfo.location },
-                  { icon: Mail, label: "Email", value: personalInfo.email },
-                  { icon: Phone, label: "Phone", value: personalInfo.phone }
+                  { icon: Github, label: "GitHub", value: "Sameer-Ansari506", href: personalInfo.github },
+                  { icon: Linkedin, label: "LinkedIn", value: "sameer-ahmad", href: personalInfo.linkedin },
+                  { icon: Phone, label: "Phone", value: personalInfo.phone, href: `tel:${personalInfo.phone}` }
                 ].map((item, idx) => (
-                  <motion.div
+                  <motion.a
                     key={idx}
+                    href={item.href}
+                    target={item.icon === Phone ? undefined : "_blank"}
+                    rel={item.icon === Phone ? undefined : "noopener noreferrer"}
                     whileHover={{ x: 10, scale: 1.02 }}
                     className={`flex items-center gap-4 p-5 rounded-2xl shadow-lg transition-all ${
                       darkMode 
@@ -511,7 +491,7 @@ export default function Home() {
                         darkMode ? 'text-white' : 'text-gray-900'
                       }`}>{item.value}</p>
                     </div>
-                  </motion.div>
+                  </motion.a>
                 ))}
               </div>
             </motion.div>
