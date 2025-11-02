@@ -272,3 +272,4 @@ Then add the icons to the hero section (around line 195).
 
 Once you're done, you'll have a professional, modern portfolio ready to impress! 🎉
 
+

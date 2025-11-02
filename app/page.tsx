@@ -59,112 +59,150 @@ export default function Home() {
     }
   };
 
-  // REPLACE THIS DATA WITH YOUR ACTUAL RESUME INFORMATION
+  // Personal Information from Resume
   const personalInfo = {
     name: "Sameer Ansari",
-    title: "Full Stack Developer | Software Engineer",
-    location: "Your City, Country",
-    email: "sameer.ansari@example.com",
-    phone: "+1 (234) 567-8900",
-    bio: "Passionate software engineer with expertise in building scalable web applications and delivering innovative solutions. Specialized in modern web technologies with a focus on user experience and performance optimization.",
-    github: "https://github.com/sameeransari",
-    linkedin: "https://linkedin.com/in/sameeransari",
-    twitter: "https://twitter.com/sameeransari"
+    title: "iOS/Android & Full-Stack Developer",
+    location: "Lahore, Pakistan",
+    email: "Aaleadam485@gmail.com",
+    phone: "+92 (325) 233 3384",
+    bio: "Result-driven Computer Science student with 2 years of industry experience in mobile and full-stack development. Specialized in iOS (SwiftUI/UIKit), Android (Kotlin/Jetpack Compose), and React Native applications. Seeking opportunities to create innovative solutions and deliver exceptional user experiences.",
+    github: "https://github.com/Sameer-Ansari506",
+    linkedin: "https://linkedin.com/in/sameer-ahmad-651194269",
+    twitter: "https://github.com/Sameer-Ansari506"
   };
 
   const skills = [
     { 
-      category: "Frontend Development", 
-      items: ["React.js", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "Redux", "Vue.js"],
+      category: "Programming Languages", 
+      items: ["Swift", "Kotlin", "Java", "C/C++", "C#", "JavaScript", "HTML", "CSS", "XML", "Matlab"],
       icon: "💻"
     },
     { 
-      category: "Backend Development", 
-      items: ["Node.js", "Express.js", "Python", "Django", "FastAPI", "RESTful APIs", "GraphQL"],
+      category: "Frameworks & Technologies", 
+      items: ["SwiftUI", "UIKit", "Jetpack Compose", "React", "React Native", "MERN Stack", "ASP.NET", "SFML"],
       icon: "⚙️"
     },
     { 
-      category: "Database & Cloud", 
-      items: ["MongoDB", "PostgreSQL", "MySQL", "Redis", "AWS", "Firebase", "Docker"],
-      icon: "☁️"
+      category: "Development Tools", 
+      items: ["Xcode", "Android Studio", "VS Code", "Unity", "Linux", "Git", "Firebase", "MSSQL"],
+      icon: "🛠️"
     },
     { 
-      category: "Tools & Practices", 
-      items: ["Git", "CI/CD", "Agile/Scrum", "Jest", "Testing", "Microservices", "System Design"],
-      icon: "🛠️"
+      category: "Skills & Certifications", 
+      items: ["iOS Development", "Android Development", "Full-Stack Development", "Unity Game Dev (2023)", "Agile/Scrum", "Team Leadership"],
+      icon: "🎯"
     }
   ];
 
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description: "A full-stack e-commerce solution with real-time inventory management, secure payment processing, and admin dashboard. Built with modern tech stack for optimal performance.",
-      tech: ["Next.js", "TypeScript", "PostgreSQL", "Stripe", "AWS"],
-      github: "https://github.com/yourusername/project1",
-      demo: "https://project1-demo.com",
-      highlights: ["10K+ active users", "99.9% uptime", "Real-time analytics", "Mobile-responsive"]
+      title: "Automated Scrum Master",
+      description: "Fully functional cross-platform mobile application automating agile workflow using AI agents and Generative AI. Built as an internship project with advanced features.",
+      tech: ["React Native", "AI/ML", "Gen AI", "Node.js"],
+      github: "https://github.com/Sameer-Ansari506",
+      demo: "#",
+      highlights: ["AI-powered automation", "Cross-platform", "Agile workflow", "Responsive UI"]
     },
     {
-      title: "Task Management System",
-      description: "Collaborative project management tool with real-time updates, team collaboration features, and advanced analytics. Supports multiple workspaces and custom workflows.",
-      tech: ["React", "Node.js", "MongoDB", "Socket.io", "Redis"],
-      github: "https://github.com/yourusername/project2",
-      demo: "https://project2-demo.com",
-      highlights: ["Real-time collaboration", "Custom workflows", "Team analytics", "Cloud storage"]
+      title: "Islamic App (iOS & Android)",
+      description: "Real-time Islamic application developed for client using native development. Led team and managed entire project with efficient API handling and modern UI/UX.",
+      tech: ["SwiftUI", "Kotlin", "Firebase", "REST APIs"],
+      github: "https://github.com/Sameer-Ansari506",
+      demo: "#",
+      highlights: ["Dual platform", "Real-time features", "Team leadership", "Client project"]
     },
     {
-      title: "AI-Powered Dashboard",
-      description: "Interactive data visualization dashboard with AI-driven insights and predictions. Features custom charts, export functionality, and automated reporting.",
-      tech: ["React", "Python", "FastAPI", "TensorFlow", "D3.js"],
-      github: "https://github.com/yourusername/project3",
-      demo: "https://project3-demo.com",
-      highlights: ["AI predictions", "Interactive charts", "Auto-reporting", "Export to PDF"]
+      title: "Health Monitoring App",
+      description: "Real-time Android application with Bluetooth device integration for health monitoring. Features real-time data recording and updates with professional UI/UX.",
+      tech: ["Kotlin", "Jetpack Compose", "Bluetooth", "Firebase"],
+      github: "https://github.com/Sameer-Ansari506",
+      demo: "#",
+      highlights: ["Bluetooth integration", "Real-time data", "Health monitoring", "Native Android"]
+    },
+    {
+      title: "Fitness App",
+      description: "Fully functional Android fitness application with computer vision integration and AI chatbot. Advanced features with responsive UI and efficient network requests.",
+      tech: ["Kotlin", "Jetpack Compose", "Computer Vision", "AI Chatbot"],
+      github: "https://github.com/Sameer-Ansari506",
+      demo: "#",
+      highlights: ["Computer vision", "AI chatbot", "Fitness tracking", "Modern UI"]
+    },
+    {
+      title: "ARScanning iOS App",
+      description: "Augmented Reality scanning application for construction company. Built using UIKit with efficient AR implementation and responsive design.",
+      tech: ["Swift", "UIKit", "ARKit", "Computer Vision"],
+      github: "https://github.com/Sameer-Ansari506",
+      demo: "#",
+      highlights: ["AR technology", "Construction focus", "iOS native", "Open source"]
+    },
+    {
+      title: "Lost & Found Social Platform",
+      description: "Social media application for lost and found items with real-time messaging and data storage. Available on both iOS (SwiftUI) and Android (Jetpack Compose).",
+      tech: ["SwiftUI", "Kotlin", "Firebase", "Real-time DB"],
+      github: "https://github.com/Sameer-Ansari506",
+      demo: "#",
+      highlights: ["Social features", "Real-time messaging", "Dual platform", "Firebase integration"]
     }
   ];
 
   const experience = [
     {
-      role: "Senior Full Stack Developer",
-      company: "Tech Innovations Inc.",
-      location: "San Francisco, CA",
-      duration: "Jan 2023 - Present",
+      role: "Software Engineering Intern",
+      company: "Folio3",
+      location: "Hybrid (Lahore, Pakistan)",
+      duration: "June 2025 - Aug 2025",
       responsibilities: [
-        "Led development of microservices architecture serving 1M+ users with 99.9% uptime",
-        "Mentored team of 5 junior developers and conducted code reviews",
-        "Improved application performance by 40% through optimization and caching strategies",
-        "Collaborated with product team to define technical roadmap and architecture decisions",
-        "Implemented CI/CD pipelines reducing deployment time from 2 hours to 15 minutes"
+        "Nine weeks of hands-on industry experience working on multiple technology stacks",
+        "Developed a fully functional real-time React Native mobile application",
+        "Worked on diverse projects gaining practical experience in modern development practices",
+        "Collaborated with senior developers to deliver production-ready solutions",
+        "Gained expertise in cross-platform mobile development and agile methodologies"
       ],
-      tech: ["React", "Node.js", "AWS", "Docker", "Kubernetes"]
+      tech: ["React Native", "JavaScript", "Mobile Development", "Agile"]
     },
     {
-      role: "Full Stack Developer",
-      company: "Digital Solutions Corp",
-      location: "Remote",
-      duration: "Jun 2021 - Dec 2022",
+      role: "Application Development Intern",
+      company: "Analyzinn Solutions",
+      location: "Remote (Lahore, Pakistan)",
+      duration: "July 2024 - March 2025",
       responsibilities: [
-        "Built and deployed RESTful APIs using Node.js and Express serving 50K+ requests daily",
-        "Developed responsive web applications with React and TypeScript",
-        "Implemented real-time features using WebSockets and Redis pub/sub",
-        "Worked in Agile environment with 2-week sprint cycles",
-        "Reduced page load time by 60% through code splitting and lazy loading"
+        "Nine months of comprehensive industry experience in mobile application development",
+        "Led a 2-person team in real-time iOS mobile application development",
+        "Excelled in both SwiftUI and UIKit frameworks for iOS development",
+        "Developed a real-time Android mobile application using Kotlin",
+        "Managed end-to-end development lifecycle from design to deployment"
       ],
-      tech: ["React", "Express.js", "PostgreSQL", "Redis"]
+      tech: ["SwiftUI", "UIKit", "Kotlin", "iOS", "Android"]
+    },
+    {
+      role: "Web Development Intern",
+      company: "PrepVista",
+      location: "Remote (Lahore, Pakistan)",
+      duration: "June 2024 - July 2024",
+      responsibilities: [
+        "Contributed to real-time web development projects",
+        "Worked with modern web technologies and frameworks",
+        "Implemented responsive UI designs and efficient backend integrations",
+        "Collaborated with team members to meet project deadlines",
+        "Gained experience in full-stack web development practices"
+      ],
+      tech: ["Web Development", "JavaScript", "React", "Full-Stack"]
     }
   ];
 
   const education = [
     {
       degree: "Bachelor of Science in Computer Science",
-      institution: "University Name",
-      location: "City, State",
-      duration: "2017 - 2021",
-      gpa: "3.8/4.0",
+      institution: "National University of Computing and Emerging Sciences (FAST-NUCES)",
+      location: "Lahore, Pakistan",
+      duration: "Continuing",
+      gpa: "3.45/4.0",
       achievements: [
-        "Dean's List (All Semesters)",
-        "Academic Excellence Scholarship",
-        "Best Final Year Project Award",
-        "Coding Competition Winner 2020"
+        "Dean's List Holder (2022, 2023, 2025)",
+        "1st Position Holder - ECAT-ICS (2022)",
+        "98% Marks in Intermediate (2020)",
+        "93% Marks in Matriculation (2020)"
       ]
     }
   ];
