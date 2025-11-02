@@ -1,0 +1,14 @@
+HOW TO ADD YOUR PROFILE PHOTO
+================================
+
+1. Save your photo as "profile.jpg" in this folder (public/)
+2. The portfolio will automatically use it!
+
+Your photo should be:
+- Square or portrait orientation
+- At least 400x400 pixels
+- Professional quality
+- Named exactly: profile.jpg
+
+The code is already updated to use your photo!
+
