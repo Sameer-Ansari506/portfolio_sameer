@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Github, 
   Linkedin, 
@@ -22,6 +22,7 @@ import { useState, useEffect } from 'react';
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     // Check system preference
@@ -34,6 +35,16 @@ export default function Home() {
     mediaQuery.addEventListener('change', handleChange);
     
     return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
+  useEffect(() => {
+    // Track scroll position for navbar image animation
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const toggleDarkMode = () => setDarkMode(!darkMode);
@@ -254,13 +265,44 @@ export default function Home() {
       }`}>
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <motion.h1 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="text-2xl font-bold bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 bg-clip-text text-transparent"
-            >
-              {personalInfo.name}
-            </motion.h1>
+            <div className="flex items-center gap-3">
+              <AnimatePresence>
+                {scrolled && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0, y: 100 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0, y: 100 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                    className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 via-purple-500 to-pink-600 p-0.5 shadow-lg"
+                  >
+                    <div className="w-full h-full rounded-full overflow-hidden bg-white">
+                      <img
+                        src="/profile.jpg"
+                        alt={personalInfo.name}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          const parent = target.parentElement;
+                          if (parent) {
+                            parent.innerHTML = `<div class="w-full h-full flex items-center justify-center text-sm font-bold ${
+                              darkMode ? 'bg-gray-900 text-cyan-400' : 'bg-white text-purple-600'
+                            }">${personalInfo.name.split(' ').map(n => n[0]).join('')}</div>`;
+                          }
+                        }}
+                      />
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+              <motion.h1 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="text-2xl font-bold bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 bg-clip-text text-transparent"
+              >
+                {personalInfo.name}
+              </motion.h1>
+            </div>
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -305,35 +347,44 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <div className="mb-8 relative inline-block">
-              <div className="w-36 h-36 rounded-full bg-gradient-to-br from-cyan-400 via-purple-500 to-pink-600 p-1.5 animate-pulse shadow-2xl">
-                <div className="w-full h-full rounded-full overflow-hidden bg-white">
-                  <img
-                    src="/profile.jpg"
-                    alt={personalInfo.name}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      // Fallback to initials if image not found
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                      const parent = target.parentElement;
-                      if (parent) {
-                        parent.innerHTML = `<div class="w-full h-full flex items-center justify-center text-5xl font-bold ${
-                          darkMode ? 'bg-gray-900 text-cyan-400' : 'bg-white text-purple-600'
-                        }">${personalInfo.name.split(' ').map(n => n[0]).join('')}</div>`;
-                      }
-                    }}
-                  />
-                </div>
-              </div>
-              <motion.div 
-                className="absolute -bottom-2 -right-2 bg-gradient-to-r from-green-400 to-emerald-500 w-10 h-10 rounded-full border-4 border-white dark:border-gray-900 flex items-center justify-center shadow-lg"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ repeat: Infinity, duration: 2 }}
-              >
-                <Sparkles size={20} className="text-white" />
-              </motion.div>
-            </div>
+            <AnimatePresence>
+              {!scrolled && (
+                <motion.div 
+                  initial={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.5, y: -100 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                  className="mb-8 relative inline-block"
+                >
+                  <div className="w-36 h-36 rounded-full bg-gradient-to-br from-cyan-400 via-purple-500 to-pink-600 p-1.5 animate-pulse shadow-2xl">
+                    <div className="w-full h-full rounded-full overflow-hidden bg-white">
+                      <img
+                        src="/profile.jpg"
+                        alt={personalInfo.name}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          // Fallback to initials if image not found
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          const parent = target.parentElement;
+                          if (parent) {
+                            parent.innerHTML = `<div class="w-full h-full flex items-center justify-center text-5xl font-bold ${
+                              darkMode ? 'bg-gray-900 text-cyan-400' : 'bg-white text-purple-600'
+                            }">${personalInfo.name.split(' ').map(n => n[0]).join('')}</div>`;
+                          }
+                        }}
+                      />
+                    </div>
+                  </div>
+                  <motion.div 
+                    className="absolute -bottom-2 -right-2 bg-gradient-to-r from-green-400 to-emerald-500 w-10 h-10 rounded-full border-4 border-white dark:border-gray-900 flex items-center justify-center shadow-lg"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ repeat: Infinity, duration: 2 }}
+                  >
+                    <Sparkles size={20} className="text-white" />
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
             
             <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-600 bg-clip-text text-transparent leading-tight">
               {personalInfo.name}
