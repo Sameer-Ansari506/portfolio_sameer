@@ -111,7 +111,7 @@ export default function Home() {
       title: "Automated Scrum Master",
       description: "Fully functional cross-platform mobile application automating agile workflow using AI agents and Generative AI. Built as an internship project with advanced features.",
       tech: ["React Native", "AI/ML", "Gen AI", "Node.js"],
-      github: "https://github.com/Sameer-Ansari506",
+      github: "https://github.com/Sameer-Ansari506/Scrum-Ai",
       demo: "#",
       highlights: ["AI-powered automation", "Cross-platform", "Agile workflow", "Responsive UI"]
     },
@@ -119,7 +119,7 @@ export default function Home() {
       title: "Islamic App (iOS & Android)",
       description: "Real-time Islamic application developed for client using native development. Led team and managed entire project with efficient API handling and modern UI/UX.",
       tech: ["SwiftUI", "Kotlin", "Firebase", "REST APIs"],
-      github: "https://github.com/Sameer-Ansari506",
+      github: "https://github.com/rasaalahmad/Raah-e-Mehfil_Android",
       demo: "#",
       highlights: ["Dual platform", "Real-time features", "Team leadership", "Client project"]
     },
@@ -135,7 +135,7 @@ export default function Home() {
       title: "Fitness App",
       description: "Fully functional Android fitness application with computer vision integration and AI chatbot. Advanced features with responsive UI and efficient network requests.",
       tech: ["Kotlin", "Jetpack Compose", "Computer Vision", "AI Chatbot"],
-      github: "https://github.com/Sameer-Ansari506",
+      github: "https://github.com/Sameer-Ansari506/FitnessApp",
       demo: "#",
       highlights: ["Computer vision", "AI chatbot", "Fitness tracking", "Modern UI"]
     },
@@ -151,7 +151,7 @@ export default function Home() {
       title: "Lost & Found Social Platform",
       description: "Social media application for lost and found items with real-time messaging and data storage. Available on both iOS (SwiftUI) and Android (Jetpack Compose).",
       tech: ["SwiftUI", "Kotlin", "Firebase", "Real-time DB"],
-      github: "https://github.com/Sameer-Ansari506",
+      github: "https://github.com/Sameer-Ansari506/LiPiFiApp",
       demo: "#",
       highlights: ["Social features", "Real-time messaging", "Dual platform", "Firebase integration"]
     }
