@@ -196,14 +196,49 @@ export default function Home() {
       degree: "Bachelor of Science in Computer Science",
       institution: "National University of Computing and Emerging Sciences (FAST-NUCES)",
       location: "Lahore, Pakistan",
-      duration: "Continuing",
-      gpa: "3.45/4.0",
-      achievements: [
-        "Dean's List Holder (2022, 2023, 2025)",
-        "1st Position Holder - ECAT-ICS (2022)",
-        "98% Marks in Intermediate (2020)",
-        "93% Marks in Matriculation (2020)"
-      ]
+      duration: "Aug 2022 - Continuing",
+      gpa: "3.45/4.0"
+    },
+    {
+      degree: "Intermediate in Computer Science",
+      institution: "Government College University",
+      location: "Lahore, Pakistan",
+      duration: "Aug 2020 - Aug 2022",
+      gpa: "1033/1100 (94%)"
+    },
+    {
+      degree: "Matriculation in Computer Science",
+      institution: "Dar-E-Arqam School",
+      location: "Lahore, Pakistan",
+      duration: "Completed Aug 2020",
+      gpa: "1072/1100 (97%)"
+    }
+  ];
+
+  const achievements = [
+    {
+      title: "Dean's List Holder",
+      description: "FAST-NUCES",
+      years: "2022, 2023, 2025",
+      icon: "🏆"
+    },
+    {
+      title: "1st Position Holder",
+      description: "ECAT-ICS",
+      years: "2022",
+      icon: "🥇"
+    },
+    {
+      title: "98% Marks",
+      description: "Intermediate (BISE)",
+      years: "2020",
+      icon: "📚"
+    },
+    {
+      title: "93% Marks",
+      description: "Matriculation (BISE)",
+      years: "2020",
+      icon: "⭐"
     }
   ];
 
@@ -231,7 +266,7 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               className="flex gap-6 items-center"
             >
-              {['About', 'Skills', 'Projects', 'Experience', 'Education', 'Contact'].map((item) => (
+              {['About', 'Skills', 'Projects', 'Experience', 'Education', 'Achievements', 'Contact'].map((item) => (
                 <a 
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -690,12 +725,12 @@ export default function Home() {
               <span className="bg-gradient-to-r from-cyan-500 to-pink-600 bg-clip-text text-transparent">Education</span>
             </motion.h2>
             
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-5xl mx-auto space-y-6">
               {education.map((edu, idx) => (
                 <motion.div
                   key={idx}
                   variants={itemVariants}
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ x: 10, scale: 1.01 }}
                   className={`rounded-3xl p-8 shadow-2xl transition-all ${
                     darkMode 
                       ? 'bg-gradient-to-br from-gray-800 to-purple-900/50 hover:shadow-purple-500/50' 
@@ -708,12 +743,12 @@ export default function Home() {
                     </div>
                     
                     <div className="flex-1">
-                      <h3 className={`text-2xl md:text-3xl font-bold mb-2 ${
+                      <h3 className={`text-2xl font-bold mb-2 ${
                         darkMode ? 'text-white' : 'text-gray-900'
                       }`}>{edu.degree}</h3>
                       <p className="text-xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 bg-clip-text text-transparent mb-4">{edu.institution}</p>
                       
-                      <div className={`flex flex-wrap gap-4 mb-4 ${
+                      <div className={`flex flex-wrap gap-4 ${
                         darkMode ? 'text-gray-400' : 'text-gray-600'
                       }`}>
                         <div className="flex items-center gap-2">
@@ -726,27 +761,67 @@ export default function Home() {
                         </div>
                         <div className="flex items-center gap-2">
                           <Award size={16} />
-                          <span className="text-sm font-bold">GPA: {edu.gpa}</span>
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <p className={`text-sm font-bold mb-3 ${
-                          darkMode ? 'text-purple-400' : 'text-purple-600'
-                        }`}>ACHIEVEMENTS:</p>
-                        <div className="flex flex-wrap gap-2">
-                          {edu.achievements.map((achievement, aIdx) => (
-                            <span key={aIdx} className={`px-4 py-2 rounded-full text-sm font-bold shadow-md ${
-                              darkMode
-                                ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white'
-                                : 'bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800'
-                            }`}>
-                              {achievement}
-                            </span>
-                          ))}
+                          <span className="text-sm font-bold">{edu.gpa}</span>
                         </div>
                       </div>
                     </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Achievements Section */}
+      <section id="achievements" className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+          >
+            <motion.h2 variants={itemVariants} className={`text-4xl md:text-6xl font-black mb-12 text-center ${
+              darkMode ? 'text-white' : 'text-gray-900'
+            }`}>
+              Awards & <span className="bg-gradient-to-r from-cyan-500 to-pink-600 bg-clip-text text-transparent">Achievements</span>
+            </motion.h2>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {achievements.map((achievement, idx) => (
+                <motion.div
+                  key={idx}
+                  variants={itemVariants}
+                  whileHover={{ y: -10, scale: 1.05 }}
+                  className={`rounded-3xl p-8 shadow-2xl transition-all text-center ${
+                    darkMode 
+                      ? 'bg-gradient-to-br from-gray-800 via-purple-900/50 to-pink-900/30 hover:shadow-purple-500/50' 
+                      : 'bg-gradient-to-br from-white via-purple-50 to-pink-50 hover:shadow-purple-300'
+                  }`}
+                >
+                  <motion.div 
+                    className="text-6xl mb-4"
+                    animate={{ rotate: [0, 10, -10, 0] }}
+                    transition={{ repeat: Infinity, duration: 3, delay: idx * 0.2 }}
+                  >
+                    {achievement.icon}
+                  </motion.div>
+                  
+                  <h3 className={`text-xl font-bold mb-2 ${
+                    darkMode ? 'text-white' : 'text-gray-900'
+                  }`}>{achievement.title}</h3>
+                  
+                  <p className={`text-sm font-semibold mb-2 ${
+                    darkMode ? 'text-purple-400' : 'text-purple-600'
+                  }`}>{achievement.description}</p>
+                  
+                  <div className={`inline-block px-4 py-1.5 rounded-full text-xs font-bold ${
+                    darkMode
+                      ? 'bg-gradient-to-r from-cyan-600 to-purple-600 text-white'
+                      : 'bg-gradient-to-r from-cyan-100 to-purple-100 text-purple-800'
+                  }`}>
+                    {achievement.years}
                   </div>
                 </motion.div>
               ))}
