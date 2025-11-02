@@ -222,7 +222,7 @@ export default function Home() {
       institution: "Dar-E-Arqam School",
       location: "Lahore, Pakistan",
       duration: "Completed Aug 2020",
-      gpa: "1072/1100 (97%)"
+      gpa: "1072/1100 (98%)"
     }
   ];
 
@@ -241,13 +241,13 @@ export default function Home() {
     },
     {
       title: "98% Marks",
-      description: "Intermediate (BISE)",
+      description: "Matriculation (BISE)",
       years: "2020",
       icon: "📚"
     },
     {
       title: "93% Marks",
-      description: "Matriculation (BISE)",
+      description: "Intermediate (BISE)",
       years: "2020",
       icon: "⭐"
     }
