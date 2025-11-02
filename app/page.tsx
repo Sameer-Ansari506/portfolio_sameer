@@ -16,13 +16,23 @@ import {
   Download,
   Moon,
   Sun,
-  Sparkles
+  Sparkles,
+  Apple,
+  Smartphone,
+  RefreshCw,
+  Globe,
+  Gamepad2,
+  Layers,
+  Filter,
+  X
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [projectFilter, setProjectFilter] = useState('All');
+  const [showFilterPopup, setShowFilterPopup] = useState(false);
 
   useEffect(() => {
     // Check system preference
@@ -60,12 +70,13 @@ export default function Home() {
   };
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.6
+        duration: 0.6,
+        ease: [0.4, 0, 0.2, 1] as [number, number, number, number]
       }
     }
   };
@@ -82,6 +93,15 @@ export default function Home() {
     linkedin: "https://linkedin.com/in/sameer-ahmad-651194269",
     twitter: "https://github.com/Sameer-Ansari506"
   };
+
+  const filterOptions = [
+    { name: 'All', icon: Layers },
+    { name: 'iOS', icon: Apple },
+    { name: 'Android', icon: Smartphone },
+    { name: 'Cross Platform', icon: RefreshCw },
+    { name: 'Web', icon: Globe },
+    { name: 'Others', icon: Gamepad2 }
+  ];
 
   const skills = [
     { 
@@ -113,15 +133,32 @@ export default function Home() {
       tech: ["React Native", "AI/ML", "Gen AI", "Node.js"],
       github: "https://github.com/Sameer-Ansari506/Scrum-Ai",
       demo: "#",
-      highlights: ["AI-powered automation", "Cross-platform", "Agile workflow", "Responsive UI"]
+      highlights: ["AI-powered automation", "Cross-platform", "Agile workflow", "Responsive UI"],
+      category: "Cross Platform",
+      duration: "June 2025 - Aug 2025",
+      sortDate: new Date('2025-08-01')
     },
     {
-      title: "Islamic App (iOS & Android)",
-      description: "Real-time Islamic application developed for client using native development. Led team and managed entire project with efficient API handling and modern UI/UX.",
-      tech: ["SwiftUI", "Kotlin", "Firebase", "REST APIs"],
+      title: "Islamic App (iOS)",
+      description: "Real-time iOS application for client using native SwiftUI development. Led team and managed entire project with efficient API handling and Apple's latest navigation features.",
+      tech: ["SwiftUI", "Firebase", "REST APIs"],
+      github: "https://github.com/Sameer-Ansari506",
+      demo: "#",
+      highlights: ["Team leadership", "Real-time features", "SwiftUI", "Client project"],
+      category: "iOS",
+      duration: "July 2024 - March 2025",
+      sortDate: new Date('2025-03-01')
+    },
+    {
+      title: "Islamic App (Android)",
+      description: "Real-time Android application for client using native Kotlin development. Features efficient API handling and modern UI/UX with best programming practices.",
+      tech: ["Kotlin", "Firebase", "REST APIs"],
       github: "https://github.com/rasaalahmad/Raah-e-Mehfil_Android",
       demo: "#",
-      highlights: ["Dual platform", "Real-time features", "Team leadership", "Client project"]
+      highlights: ["Native Android", "Real-time features", "API handling", "Client project"],
+      category: "Android",
+      duration: "Aug 2024 - Nov 2024",
+      sortDate: new Date('2024-11-01')
     },
     {
       title: "Health Monitoring App",
@@ -129,7 +166,10 @@ export default function Home() {
       tech: ["Kotlin", "Jetpack Compose", "Bluetooth", "Firebase"],
       github: "https://github.com/Sameer-Ansari506",
       demo: "#",
-      highlights: ["Bluetooth integration", "Real-time data", "Health monitoring", "Native Android"]
+      highlights: ["Bluetooth integration", "Real-time data", "Health monitoring", "Jetpack Compose"],
+      category: "Android",
+      duration: "Sep 2024 - Nov 2024",
+      sortDate: new Date('2024-11-01')
     },
     {
       title: "Fitness App",
@@ -137,7 +177,10 @@ export default function Home() {
       tech: ["Kotlin", "Jetpack Compose", "Computer Vision", "AI Chatbot"],
       github: "https://github.com/Sameer-Ansari506/FitnessApp",
       demo: "#",
-      highlights: ["Computer vision", "AI chatbot", "Fitness tracking", "Modern UI"]
+      highlights: ["Computer vision", "AI chatbot", "Fitness tracking", "Modern UI"],
+      category: "Android",
+      duration: "Feb 2025 - Jun 2025",
+      sortDate: new Date('2025-06-01')
     },
     {
       title: "ARScanning iOS App",
@@ -145,15 +188,87 @@ export default function Home() {
       tech: ["Swift", "UIKit", "ARKit", "Computer Vision"],
       github: "https://github.com/Sameer-Ansari506",
       demo: "#",
-      highlights: ["AR technology", "Construction focus", "iOS native", "Open source"]
+      highlights: ["AR technology", "Construction focus", "iOS native", "Open source"],
+      category: "iOS",
+      duration: "Dec 2024 - Feb 2025",
+      sortDate: new Date('2025-02-01')
     },
     {
-      title: "Lost & Found Social Platform",
-      description: "Social media application for lost and found items with real-time messaging and data storage. Available on both iOS (SwiftUI) and Android (Jetpack Compose).",
-      tech: ["SwiftUI", "Kotlin", "Firebase", "Real-time DB"],
+      title: "Lost & Found iOS App",
+      description: "Social media application for lost and found items built with SwiftUI. Features real-time in-app messaging and real-time data storage with Firebase.",
+      tech: ["SwiftUI", "Firebase", "Real-time DB"],
       github: "https://github.com/Sameer-Ansari506/LiPiFiApp",
       demo: "#",
-      highlights: ["Social features", "Real-time messaging", "Dual platform", "Firebase integration"]
+      highlights: ["Social features", "Real-time messaging", "SwiftUI", "Firebase integration"],
+      category: "iOS",
+      duration: "Jan 2025 - Mar 2025",
+      sortDate: new Date('2025-03-01')
+    },
+    {
+      title: "Lost & Found Android App",
+      description: "Social media application for lost and found items built with Jetpack Compose. Features real-time messaging and follows best programming practices.",
+      tech: ["Kotlin", "Jetpack Compose", "Firebase", "Real-time DB"],
+      github: "https://github.com/Sameer-Ansari506",
+      demo: "#",
+      highlights: ["Social features", "Real-time messaging", "Best practices", "Firebase integration"],
+      category: "Android",
+      duration: "Sep 2024 - Dec 2024",
+      sortDate: new Date('2024-12-01')
+    },
+    {
+      title: "Library Management System",
+      description: "Complete library website with booking system built in React with MSSQL. Features efficient backend, SQL database integration, and user session management.",
+      tech: ["React", "MSSQL", "Node.js", "Express"],
+      github: "https://github.com/Sameer-Ansari506",
+      demo: "#",
+      highlights: ["Full-stack", "Booking system", "Session management", "Admin & user views"],
+      category: "Web",
+      duration: "Jun 2024 - Jul 2024",
+      sortDate: new Date('2024-07-01')
+    },
+    {
+      title: "Cinema Management System",
+      description: "Complete cinema website with payment and ticketing system. Built with ASP.NET featuring efficient backend and SQL database integration.",
+      tech: ["ASP.NET", ".NET", "MSSQL"],
+      github: "https://github.com/Sameer-Ansari506",
+      demo: "#",
+      highlights: ["Payment system", "Ticketing", "Admin & user views", "Database integration"],
+      category: "Web",
+      duration: "Mar 2024 - Jun 2024",
+      sortDate: new Date('2024-06-01')
+    },
+    {
+      title: "Tetris Game",
+      description: "Fully functional Tetris game developed in assembly language with UI and graphics. Efficiently implemented all gaming rules and features.",
+      tech: ["Assembly", "Graphics"],
+      github: "https://github.com/Sameer-Ansari506",
+      demo: "#",
+      highlights: ["Assembly language", "Game logic", "UI & Graphics", "Efficient implementation"],
+      category: "Others",
+      duration: "Oct 2023 - Dec 2023",
+      sortDate: new Date('2023-12-01')
+    },
+    {
+      title: "Solitaire Game",
+      description: "Replica of original Solitaire game with UI and Graphics using C++ SFML libraries. Features mouse inputs and background music implementation.",
+      tech: ["C++", "SFML", "OOP"],
+      github: "https://github.com/Sameer-Ansari506",
+      demo: "#",
+      highlights: ["Game replica", "Graphics", "Mouse input", "Background music"],
+      category: "Others",
+      duration: "Apr 2023 - Jun 2023",
+      sortDate: new Date('2023-06-01')
+    },
+    {
+      title: "Bejewelled Blitz",
+      description: "Fully functional console-based replica of Bejewelled Blitz. Replicated all rules and gaming logic of the actual game in C++.",
+      tech: ["C++", "Console"],
+      github: "https://github.com/Sameer-Ansari506",
+      demo: "#",
+      highlights: ["Game logic", "Console-based", "Full replica", "C++ fundamentals"],
+      category: "Others",
+      duration: "Nov 2022 - Dec 2022",
+      sortDate: new Date('2022-12-01')
     }
   ];
 
@@ -263,7 +378,7 @@ export default function Home() {
       <nav className={`fixed top-0 w-full backdrop-blur-md z-50 shadow-lg transition-colors ${
         darkMode ? 'bg-gray-900/90 border-b border-purple-500/20' : 'bg-white/90 border-b border-purple-200'
       }`}>
-        <div className="max-w-6xl mx-auto px-6 py-4">
+        <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-3">
               <AnimatePresence>
@@ -347,44 +462,53 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <AnimatePresence>
-              {!scrolled && (
-                <motion.div 
-                  initial={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.5, y: -100 }}
-                  transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                  className="mb-8 relative inline-block"
-                >
-                  <div className="w-36 h-36 rounded-full bg-gradient-to-br from-cyan-400 via-purple-500 to-pink-600 p-1.5 animate-pulse shadow-2xl">
-                    <div className="w-full h-full rounded-full overflow-hidden bg-white">
-                      <img
-                        src="/profile.jpg"
-                        alt={personalInfo.name}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          // Fallback to initials if image not found
-                          const target = e.target as HTMLImageElement;
-                          target.style.display = 'none';
-                          const parent = target.parentElement;
-                          if (parent) {
-                            parent.innerHTML = `<div class="w-full h-full flex items-center justify-center text-5xl font-bold ${
-                              darkMode ? 'bg-gray-900 text-cyan-400' : 'bg-white text-purple-600'
-                            }">${personalInfo.name.split(' ').map(n => n[0]).join('')}</div>`;
-                          }
-                        }}
-                      />
-                    </div>
-                  </div>
+            <motion.div 
+              className="mb-8 relative inline-block"
+              animate={{ 
+                height: scrolled ? 0 : 152,
+                marginBottom: scrolled ? 0 : 32
+              }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+            >
+              <AnimatePresence>
+                {!scrolled && (
                   <motion.div 
-                    className="absolute -bottom-2 -right-2 bg-gradient-to-r from-green-400 to-emerald-500 w-10 h-10 rounded-full border-4 border-white dark:border-gray-900 flex items-center justify-center shadow-lg"
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ repeat: Infinity, duration: 2 }}
+                    initial={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.5, y: -100 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                    className="relative inline-block"
                   >
-                    <Sparkles size={20} className="text-white" />
+                    <div className="w-36 h-36 rounded-full bg-gradient-to-br from-cyan-400 via-purple-500 to-pink-600 p-1.5 animate-pulse shadow-2xl">
+                      <div className="w-full h-full rounded-full overflow-hidden bg-white">
+                        <img
+                          src="/profile.jpg"
+                          alt={personalInfo.name}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            // Fallback to initials if image not found
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                            const parent = target.parentElement;
+                            if (parent) {
+                              parent.innerHTML = `<div class="w-full h-full flex items-center justify-center text-5xl font-bold ${
+                                darkMode ? 'bg-gray-900 text-cyan-400' : 'bg-white text-purple-600'
+                              }">${personalInfo.name.split(' ').map(n => n[0]).join('')}</div>`;
+                            }
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <motion.div 
+                      className="absolute -bottom-2 -right-2 bg-gradient-to-r from-green-400 to-emerald-500 w-10 h-10 rounded-full border-4 border-white dark:border-gray-900 flex items-center justify-center shadow-lg"
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ repeat: Infinity, duration: 2 }}
+                    >
+                      <Sparkles size={20} className="text-white" />
+                    </motion.div>
                   </motion.div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+                )}
+              </AnimatePresence>
+            </motion.div>
             
             <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-600 bg-clip-text text-transparent leading-tight">
               {personalInfo.name}
@@ -519,8 +643,8 @@ export default function Home() {
                 <motion.div
                   key={idx}
                   variants={itemVariants}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  className={`rounded-3xl p-8 shadow-2xl transition-all ${
+                  whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] } }}
+                  className={`rounded-3xl p-8 shadow-2xl will-change-transform ${
                     darkMode 
                       ? 'bg-gradient-to-br from-gray-800 to-purple-900/50 hover:shadow-purple-500/50' 
                       : 'bg-white hover:shadow-purple-200'
@@ -565,25 +689,88 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={containerVariants}
+            className="relative"
           >
-            <motion.h2 variants={itemVariants} className={`text-4xl md:text-6xl font-black mb-12 text-center ${
-              darkMode ? 'text-white' : 'text-gray-900'
-            }`}>
-              Featured <span className="bg-gradient-to-r from-cyan-500 to-pink-600 bg-clip-text text-transparent">Projects</span>
-            </motion.h2>
+            {/* Mobile Filter Button - Top Right */}
+            <motion.button
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setShowFilterPopup(true)}
+              className={`md:hidden absolute -top-16 right-0 w-12 h-12 rounded-full shadow-lg transition-all flex items-center justify-center z-10 ${
+                darkMode
+                  ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white'
+                  : 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white'
+              }`}
+            >
+              <Filter size={20} strokeWidth={2.5} />
+            </motion.button>
+
+            <div className="flex flex-col md:flex-row items-center justify-between mb-12">
+              <motion.h2 variants={itemVariants} className={`text-4xl md:text-6xl font-black ${
+                darkMode ? 'text-white' : 'text-gray-900'
+              }`}>
+                {projectFilter === 'All' ? 'Featured' : projectFilter} <span className="bg-gradient-to-r from-cyan-500 to-pink-600 bg-clip-text text-transparent">Projects</span>
+              </motion.h2>
+              
+              {/* Desktop Filter Buttons */}
+              <motion.div 
+                variants={itemVariants}
+                className="hidden md:flex gap-2 mt-6 md:mt-0"
+              >
+                {filterOptions.map((filter) => (
+                  <motion.button
+                    key={filter.name}
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setProjectFilter(filter.name)}
+                    className={`w-12 h-12 rounded-full shadow-lg transition-all flex items-center justify-center ${
+                      projectFilter === filter.name
+                        ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-purple-500/50'
+                        : darkMode
+                          ? 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
+                          : 'bg-white text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                    }`}
+                    title={filter.name}
+                  >
+                    <filter.icon size={20} strokeWidth={2.5} />
+                  </motion.button>
+                ))}
+              </motion.div>
+            </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project, idx) => (
-                <motion.div
-                  key={idx}
-                  variants={itemVariants}
-                  whileHover={{ y: -15, scale: 1.02 }}
-                  className={`rounded-3xl overflow-hidden shadow-2xl transition-all ${
-                    darkMode 
-                      ? 'bg-gray-800 hover:shadow-purple-500/50' 
-                      : 'bg-white hover:shadow-purple-200'
-                  }`}
-                >
+            <AnimatePresence mode="wait">
+              <motion.div 
+                key={projectFilter}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+              >
+                {(projectFilter === 'All' 
+                  ? projects.sort((a, b) => b.sortDate.getTime() - a.sortDate.getTime()).slice(0, 6)
+                  : projects.filter(project => project.category === projectFilter)
+                ).map((project, index) => (
+                  <motion.div
+                    key={project.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ 
+                      opacity: 1, 
+                      y: 0,
+                      transition: { 
+                        duration: 0.6,
+                        delay: index * 0.1,
+                        ease: [0.4, 0, 0.2, 1]
+                      }
+                    }}
+                    whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] } }}
+                    className={`rounded-3xl overflow-hidden shadow-2xl will-change-transform ${
+                      darkMode 
+                        ? 'bg-gray-800 hover:shadow-purple-500/50' 
+                        : 'bg-white hover:shadow-purple-200'
+                    }`}
+                  >
                   <div className="h-48 bg-gradient-to-br from-cyan-400 via-purple-500 to-pink-600 relative overflow-hidden">
                     <motion.div 
                       className="absolute inset-0 flex items-center justify-center"
@@ -594,9 +781,12 @@ export default function Home() {
                   </div>
                   
                   <div className="p-6">
-                    <h3 className={`text-2xl font-bold mb-3 ${
+                    <h3 className={`text-2xl font-bold mb-2 ${
                       darkMode ? 'text-white' : 'text-gray-900'
                     }`}>{project.title}</h3>
+                    <p className={`text-xs font-semibold mb-3 ${
+                      darkMode ? 'text-purple-400' : 'text-purple-600'
+                    }`}>{project.duration}</p>
                     <p className={`mb-4 text-sm leading-relaxed ${
                       darkMode ? 'text-gray-300' : 'text-gray-600'
                     }`}>{project.description}</p>
@@ -652,7 +842,8 @@ export default function Home() {
                   </div>
                 </motion.div>
               ))}
-            </div>
+              </motion.div>
+            </AnimatePresence>
           </motion.div>
         </div>
       </section>
@@ -677,8 +868,8 @@ export default function Home() {
                 <motion.div
                   key={idx}
                   variants={itemVariants}
-                  whileHover={{ x: 10, scale: 1.01 }}
-                  className={`rounded-3xl p-8 shadow-2xl transition-all relative overflow-hidden ${
+                  whileHover={{ x: 10, scale: 1.01, transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] } }}
+                  className={`rounded-3xl p-8 shadow-2xl will-change-transform relative overflow-hidden ${
                     darkMode 
                       ? 'bg-gradient-to-r from-gray-800 to-purple-900/30 hover:shadow-purple-500/30' 
                       : 'bg-white hover:shadow-purple-200'
@@ -761,8 +952,8 @@ export default function Home() {
                 <motion.div
                   key={idx}
                   variants={itemVariants}
-                  whileHover={{ x: 10, scale: 1.01 }}
-                  className={`rounded-3xl p-8 shadow-2xl transition-all ${
+                  whileHover={{ x: 10, scale: 1.01, transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] } }}
+                  className={`rounded-3xl p-8 shadow-2xl will-change-transform ${
                     darkMode 
                       ? 'bg-gradient-to-br from-gray-800 to-purple-900/50 hover:shadow-purple-500/50' 
                       : 'bg-white hover:shadow-purple-200'
@@ -824,8 +1015,8 @@ export default function Home() {
                 <motion.div
                   key={idx}
                   variants={itemVariants}
-                  whileHover={{ y: -10, scale: 1.05 }}
-                  className={`rounded-3xl p-8 shadow-2xl transition-all text-center ${
+                  whileHover={{ y: -8, scale: 1.03, transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] } }}
+                  className={`rounded-3xl p-8 shadow-2xl will-change-transform text-center ${
                     darkMode 
                       ? 'bg-gradient-to-br from-gray-800 via-purple-900/50 to-pink-900/30 hover:shadow-purple-500/50' 
                       : 'bg-gradient-to-br from-white via-purple-50 to-pink-50 hover:shadow-purple-300'
@@ -895,8 +1086,8 @@ export default function Home() {
                   <motion.a
                     key={idx}
                     href={contact.href}
-                    whileHover={{ y: -8, scale: 1.05 }}
-                    className={`p-6 rounded-2xl transition-all ${
+                    whileHover={{ y: -8, scale: 1.03, transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] } }}
+                    className={`p-6 rounded-2xl will-change-transform ${
                       darkMode
                         ? 'bg-gradient-to-br from-purple-900/50 to-pink-900/50 hover:from-purple-800/50 hover:to-pink-800/50'
                         : 'bg-gradient-to-br from-purple-50 to-pink-50 hover:from-purple-100 hover:to-pink-100'
@@ -945,6 +1136,123 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Mobile Filter Popup */}
+      <AnimatePresence>
+        {showFilterPopup && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowFilterPopup(false)}
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]"
+            />
+            
+            {/* Popup */}
+            <motion.div
+              initial={{ scale: 0, opacity: 0, rotate: -180 }}
+              animate={{ scale: 1, opacity: 1, rotate: 0 }}
+              exit={{ scale: 0, opacity: 0, rotate: 180 }}
+              transition={{ type: "spring", duration: 0.5 }}
+              className="fixed inset-0 z-[101] flex items-center justify-center p-4"
+            >
+              <div className={`relative ${
+                darkMode 
+                  ? 'bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900' 
+                  : 'bg-gradient-to-br from-white via-purple-50 to-white'
+              } rounded-3xl shadow-2xl p-8 max-w-sm w-full`}>
+                {/* Close Button */}
+                <motion.button
+                  whileHover={{ scale: 1.1, rotate: 90 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => setShowFilterPopup(false)}
+                  className={`absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center ${
+                    darkMode 
+                      ? 'bg-gray-800 text-gray-400 hover:text-white' 
+                      : 'bg-gray-200 text-gray-600 hover:text-gray-900'
+                  }`}
+                >
+                  <X size={20} />
+                </motion.button>
+
+                {/* Title */}
+                <h3 className={`text-2xl font-bold text-center mb-8 ${
+                  darkMode ? 'text-white' : 'text-gray-900'
+                }`}>
+                  Filter Projects
+                </h3>
+
+                {/* Circular Filter Layout */}
+                <div className="relative w-64 h-64 mx-auto flex items-center justify-center">
+                  {filterOptions.map((filter, index) => {
+                    const angle = (index * 360) / filterOptions.length - 90;
+                    const radius = 90;
+                    const x = radius * Math.cos((angle * Math.PI) / 180);
+                    const y = radius * Math.sin((angle * Math.PI) / 180);
+                    
+                    return (
+                      <motion.div
+                        key={filter.name}
+                        initial={{ scale: 0, x: 0, y: 0 }}
+                        animate={{ 
+                          scale: 1, 
+                          x: x, 
+                          y: y,
+                        }}
+                        transition={{ 
+                          delay: index * 0.1,
+                          type: "spring",
+                          stiffness: 200,
+                          damping: 15
+                        }}
+                        className="absolute"
+                        style={{ 
+                          left: '50%',
+                          top: '50%',
+                          marginLeft: '-32px',
+                          marginTop: '-32px'
+                        }}
+                      >
+                        <motion.button
+                          whileHover={{ scale: 1.2 }}
+                          whileTap={{ scale: 0.9 }}
+                          onClick={() => {
+                            setProjectFilter(filter.name);
+                            setShowFilterPopup(false);
+                          }}
+                          className={`w-16 h-16 rounded-full shadow-xl transition-all flex flex-col items-center justify-center ${
+                            projectFilter === filter.name
+                              ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-purple-500/50'
+                              : darkMode
+                                ? 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
+                                : 'bg-white text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                          }`}
+                        >
+                          <filter.icon size={24} strokeWidth={2.5} />
+                          <span className="text-[8px] mt-1 font-semibold">
+                            {filter.name === 'Cross Platform' ? 'Cross' : filter.name}
+                          </span>
+                        </motion.button>
+                      </motion.div>
+                    );
+                  })}
+                  
+                  {/* Center Circle */}
+                  <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full flex items-center justify-center ${
+                    darkMode 
+                      ? 'bg-gradient-to-br from-purple-600 to-cyan-600' 
+                      : 'bg-gradient-to-br from-purple-400 to-cyan-400'
+                  } shadow-lg`}>
+                    <Sparkles className="text-white" size={32} />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
