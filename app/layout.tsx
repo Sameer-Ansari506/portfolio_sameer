@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://sameeransari.vercel.app'), // Update this with your actual domain
+  metadataBase: new URL('https://sameeransari-phi.vercel.app'), // Update this with your actual domain
   title: {
     default: "Sameer Ansari - iOS/Android & Full-Stack Developer | Portfolio",
     template: "%s | Sameer Ansari"
