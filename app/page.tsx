@@ -375,8 +375,9 @@ export default function Home() {
         : 'bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50'
     }`}>
       {/* Navigation */}
-      <nav className={`fixed top-0 w-full backdrop-blur-md z-50 shadow-lg transition-colors ${
-        darkMode ? 'bg-gray-900/90 border-b border-purple-500/20' : 'bg-white/90 border-b border-purple-200'
+      <header>
+        <nav className={`fixed top-0 w-full backdrop-blur-md z-50 shadow-lg transition-colors ${
+          darkMode ? 'bg-gray-900/90 border-b border-purple-500/20' : 'bg-white/90 border-b border-purple-200'
       }`}>
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
@@ -393,8 +394,9 @@ export default function Home() {
                     <div className="w-full h-full rounded-full overflow-hidden bg-white">
                       <img
                         src="/profile.jpg"
-                        alt={personalInfo.name}
+                        alt="Sameer Ansari - iOS/Android & Full-Stack Developer Portfolio Profile Picture"
                         className="w-full h-full object-cover"
+                        loading="eager"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
                           target.style.display = 'none';
@@ -452,9 +454,12 @@ export default function Home() {
           </div>
         </div>
       </nav>
+      </header>
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
+      {/* Main Content */}
+      <main>
+        {/* Hero Section */}
+        <section id="home" className="pt-32 pb-20 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -482,8 +487,9 @@ export default function Home() {
                       <div className="w-full h-full rounded-full overflow-hidden bg-white">
                         <img
                           src="/profile.jpg"
-                          alt={personalInfo.name}
+                          alt="Sameer Ansari - Mobile & Full-Stack Developer specializing in iOS, Android, and React Native development"
                           className="w-full h-full object-cover"
+                          loading="eager"
                           onError={(e) => {
                             // Fallback to initials if image not found
                             const target = e.target as HTMLImageElement;
@@ -1109,6 +1115,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+      </main>
 
       {/* Footer */}
       <footer className={`py-10 px-6 ${
